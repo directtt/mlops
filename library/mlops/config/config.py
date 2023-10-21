@@ -9,7 +9,7 @@ class Settings:
         self.url: str = "http://127.0.0.1:8000"
         self.active_project_id = None
         self.active_experiment_id = None
-        self.user_name: str = 'TEST' # os.getlogin()
+        self.user_name: str = os.getlogin()
 
     def change_active_project(self, project_id: str):
         self.active_project_id = project_id
