@@ -14,7 +14,7 @@ jobs:
       mongo:
         image: mongo
         ports:
-          - ${{ env.MONGODB_PORT }}:${{ env.MONGODB_PORT }}
+          - ${{ vars.MONGODB_PORT }}:${{ vars.MONGODB_PORT }}
 
     steps:
     - uses: actions/checkout@v3
@@ -33,10 +33,10 @@ jobs:
     - name: Enable testing mode
       run: |
         cd back-end
-        echo "MONGODB_URL=${{ env.MONGODB_URL }}" > .env
-        echo "MONGODB_DB_NAME=${{ env.MONGODB_DB_NAME }}" >> .env
-        echo "TESTING=${{ env.TESTING }}" >> .env
-        echo "MONGODB_TEST_DB_NAME=${{ env.MONGODB_TEST_DB_NAME }}" >> .env
+        echo "MONGODB_URL=${{ vars.MONGODB_URL }}" > .env
+        echo "MONGODB_DB_NAME=${{ vars.MONGODB_DB_NAME }}" >> .env
+        echo "TESTING=${{ vars.TESTING }}" >> .env
+        echo "MONGODB_TEST_DB_NAME=${{ vars.MONGODB_TEST_DB_NAME }}" >> .env
         cat .env
 
     - name: Start FastAPI server in the background
